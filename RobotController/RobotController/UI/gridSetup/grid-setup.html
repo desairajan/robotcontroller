@@ -1,0 +1,140 @@
+﻿<div>
+    <button class="btn btn-primary" ui-sref="roboHome"><i class="glyphicon glyphicon-arrow-left"></i> Back To Home</button>
+
+    <div style="margin-left:100px; margin-top:50px;">
+        <form name="gridForm" class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Grid Length </label>
+
+                <div class="col-sm-8">
+                    <input type="text" integer ng-model="grid.length" required class="form-control">
+                    <span ng-show="grid.length.$dirty && grid.length.$invalid">
+                        <span ng-show="grid.length.$error.required">Grid Length is required</span>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Grid Width </label>
+
+                <div class="col-sm-8">
+                    <input type="text" integer ng-model="grid.width" required class="form-control">
+                    <span ng-show="grid.width.$dirty && grid.width.$invalid">
+                        <span ng-show="grid.width.required">Grid Width is required</span>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Robot Initial X Position </label>
+
+                <div class="col-sm-8">
+                    <input type="text" integer ng-model="grid.InitialLocation.Coordinate.XCoordinate" required class="form-control">
+                    <span ng-show="grid.InitialLocation.Coordinate.XCoordinate.$dirty && grid.InitialLocation.Coordinate.XCoordinate.$invalid">
+                        <span ng-show="grid.InitialLocation.Coordinate.XCoordinate.required">X Position is required</span>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Robot Initial Y Position </label>
+
+                <div class="col-sm-8">
+                    <input type="text" integer ng-model="grid.InitialLocation.Coordinate.YCoordinate" required class="form-control">
+                    <span ng-show="grid.InitialLocation.Coordinate.YCoordinate.$dirty && grid.InitialLocation.Coordinate.YCoordinate.$invalid">
+                        <span ng-show="grid.InitialLocation.Coordinate.YCoordinate.required">Y Position is required</span>
+                    </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Robot Type </label>
+
+                <div class="col-sm-8">
+                    <select ng-model="grid.RobotType" ng-options="robotType.Name for robotType in robotTypeList" required>
+                        <option value="">Select Robot Type</option>
+                    </select>
+                </div>
+            </div>
+            <!--<table cellspacing="20">
+                <!--<tr><td colspan="2" style="text-align:center;font-size:24px"><b>{{title}}</b></td></tr>-->
+            <!--<tr>
+
+                <td>Grid Length </td>
+                <td>
+                    <input type="text" integer ng-model="grid.length" name="length" id="length" required" />
+                    <span ng-show="grid.length.$dirty && grid.length.$invalid">
+                        <span ng-show="grid.length.$error.required">Grid Length is required</span>
+                    </span>
+                </td>
+            </tr>-->
+            <!--<tr>
+                <td>Grid Width </td>
+                <td>
+                    <input type="text" integer ng-model="grid.width" name="width" id="width" required />
+                    <span ng-show="grid.width.$dirty && grid.width.$invalid">
+                        <span ng-show="grid.width.$error.required">Grid Width is required</span>
+                    </span>
+                </td>
+            </tr>-->
+            <!--<tr>
+                <td>Robot Initial X Position </td>
+                <td>
+                    <input type="text" integer ng-model="grid.InitialLocation.Coordinate.xcoordinate" name="robotinitialxcoordinate" id="robotinitialxcoordinate" required />
+                    <span ng-show="grid.InitialLocation.Coordinate.XCoordinate.$dirty && grid.InitialLocation.Coordinate.XCoordinate.$invalid">
+                        <span ng-show="grid.InitialLocation.Coordinate.XCoordinate.$error.required">XCoordinate is required</span>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>Robot Initial Y Position </td>
+                <td>
+                    <input type="text" integer ng-model="grid.InitialLocation.Coordinate.YCoordinate" name="robotinitialycoordinate" id="robotinitialycoordinate" required />
+                    <span ng-show="grid.InitialLocation.Coordinate.YCoordinate.$dirty && grid.InitialLocation.Coordinate.YCoordinate.$invalid">
+                        <span ng-show="grid.InitialLocation.Coordinate.YCoordinate.$error.required">YCoordinate is required</span>
+                    </span>
+                </td>
+            </tr>-->
+            <!--<tr>
+                <td>Robot Type </td>
+                <td>
+                    <select ng-model="robotType" ng-options="robotType.Name for robotType in robotTypeList" required name="robotType">
+                        <option value="">Select Robot Type</option>
+                    </select>
+                    <span ng-show="grid.robotType.$dirty && grid.robotType.$invalid">
+                        <span ng-show="grid.robotType.$error.required">Robot Type</span>
+                    </span>
+                </td>
+            </tr>-->
+            <!--<tr>
+                <td></td>
+                <td><input type="submit" name="ProceedButton" id="ProceedButton" value="Proceed" ng-disabled="form.$invalid || form.$pristine" /></td>
+            </tr>-->
+            <!--</table>-->
+        </form>
+    </div>
+    <div style="margin-left:100px; margin-top:50px;" ng-show="grid.length && grid.width && grid.RobotType">
+        <div class="row" style="margin-left:150px;">
+            <button type="button" class="btn btn-info" ng-click="addRecord()">
+                <i class="glyphicon glyphicon-plus"></i> Add New Obstacle
+            </button>
+        </div>
+        <br />
+        <table border="1">
+            <tr>
+                <th style="width:150px">Obstacle</th>
+                <th style="width:150px">X Coordinate</th>
+                <th style="width:150px">Y Coordinate</th>
+            </tr>
+            <tr ng-repeat="obstacleLocation in grid.ObstacleList">
+
+                <td>{{ obstacleLocation.Obstacle.Name }}</td>
+
+                <td>{{ obstacleLocation.Coordinate.XCoordinate }}</td>
+
+                <td>{{ obstacleLocation.Coordinate.YCoordinate }}</td>
+
+            </tr>
+
+        </table>
+    </div>
+    <div>
+        <button class="btn btn-success pull-right" ng-click="gotoGrid(grid)"><i class="glyphicon glyphicon-arrow-right"></i> Grid</button>
+    </div>
+</div>

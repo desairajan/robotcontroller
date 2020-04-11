@@ -1,0 +1,15 @@
+﻿<button class="btn btn-primary" ui-sref="roboHome"><i class="glyphicon glyphicon-arrow-left"></i> Back To Home</button>  
+
+<br/>
+<br />
+<div style="margin-left:100px; margin-top:50px;">
+    <div>Current Location is {{grid.CurrentLocation.Coordinate.XCoordinate}} ,{{grid.CurrentLocation.Coordinate.YCoordinate}} facing {{grid.CurrentLocation.Direction}} </div>
+    <br />
+    <div ng-show="path">The path of robot is {{path}} </div>
+    <br />
+    <div>
+        <button class="btn btn-primary" ng-click="moveRecord('left')"><i class="glyphicon glyphicon-arrow-left"></i> Left</button>
+        <button class="btn btn-success" ng-click="moveRecord('forward')"><i class="glyphicon glyphicon-arrow-up"></i> Forward</button>
+        <button class="btn btn-primary" ng-click="moveRecord('right')"><i class="glyphicon glyphicon-arrow-right"></i> Right</button>
+    </div>
+</div>
